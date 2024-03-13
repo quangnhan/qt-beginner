@@ -12,15 +12,15 @@ Window {
     title: qsTr("Hello World")
 
     Component.onCompleted: {
-        progressBar.value = machine.workload
+        progressBar.value = machineObject.workload
         btnStart.enabled = true
         btnStop.enabled = false
         btnPause.enabled = false
         btnResume.enabled = false
     }
 
-    Machine {
-        id: machine
+    MachineC {
+        id: machineObject
         onStarted: {
             btnStart.enabled = false
             btnStop.enabled = true
@@ -55,8 +55,8 @@ Window {
         }
 
         onProgress: {
-            lblStatus.text = "Progress: " + machine.workload + "%"
-            progressBar.value = (machine.workload * 0.01)
+            lblStatus.text = "Progress: " + machineObject.workload + "%"
+            progressBar.value = (machineObject.workload * 0.01)
         }
     }
 
@@ -90,26 +90,26 @@ Window {
             Button {
                 id: btnStart
                 text: qsTr("Start")
-                onClicked: machine.start()
+                onClicked: machineObject.start()
 
             }
 
             Button {
                 id: btnPause
                 text: qsTr("Pause")
-                onClicked: machine.pause()
+                onClicked: machineObject.pause()
             }
 
             Button {
                 id: btnResume
                 text: qsTr("Resume")
-                onClicked: machine.resume()
+                onClicked: machineObject.resume()
             }
 
             Button {
                 id: btnStop
                 text: qsTr("Stop")
-                onClicked: machine.stop()
+                onClicked: machineObject.stop()
             }
         }
     }
